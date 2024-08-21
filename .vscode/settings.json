@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "stdbool.h": "c",
+        "stdio.h": "c",
+        "insurance.h": "c",
+        "time.h": "c",
+        "visuals.h": "c"
+    }
+}
