@@ -10,7 +10,6 @@ Card *card_new(int rank, int suit) {
     return new_card;
 }
 
-
 void card_free(Card *card) {
     free(card);
 }
@@ -32,15 +31,6 @@ int get_suit_value(uint8_t data) {
     }
 }
 
-int compare_cards(Card *card1, Card *card2) {
-    return card1->data - card2->data;
-}
-
-Card *card_draw(CardList *list) {
-    size_t index = rand() % list->len;
-    return card_remove_at(list, index);
-}
-
 const char* get_suit_name(uint8_t data) {
     int suit = data & 0x0F;  // Extract the suit from the lower 4 bits
     switch (suit) {
@@ -54,7 +44,7 @@ const char* get_suit_name(uint8_t data) {
 
 void print_card(Card *card) {
     int rank = card->data >> 4;  // Extract rank from upper 4 bits
-    const char *ranks[] = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+    const char *ranks[] = {"", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
     const char *suit_name = get_suit_name(card->data);
     printf("%s of %s", ranks[rank], suit_name);
 }

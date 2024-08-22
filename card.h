@@ -24,8 +24,6 @@ int get_rank_value(uint8_t data);
 void print_card(Card *card);
 int get_suit_value(uint8_t data);
 const char* get_suit_name(uint8_t data);
-int compare_cards(Card *card1, Card *card2);
-Card *card_draw(CardList *list);
 
 
-#endif
+#endif // CARD_H

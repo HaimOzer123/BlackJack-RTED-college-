@@ -34,18 +34,37 @@ Card *card_remove_at(CardList *cardlist, size_t index) {
     return curr;
 }
 
+void clear_cardlist(CardList *cardlist) {
+    while (cardlist->len > 0) {
+        Card *card = card_remove_at(cardlist, 0);
+        card_free(card);
+    }
+}
+
+int calculate_hand_value(CardList *hand) {
+    int value = 0, ace_count = 0;
+    for (Card *curr = hand->head; curr != NULL; curr = curr->next) {
+        int rank_value = get_rank_value(curr->data);
+        value += rank_value;
+        if (rank_value == 1) ace_count++;
+    }
+    if (ace_count > 0 && value + 10 <= 21) value += 10;
+    return value;
+}
+
 void print_hand(CardList *hand, int hide_second) {
     int count = 0;
     for (Card *curr = hand->head; curr != NULL; curr = curr->next) {
         if (count == 1 && hide_second) {
-            printf(" ?????? \n");
+            printf(" ??????");
         } else {
             print_card(curr);
         }
         if (curr->next != NULL) {
-            printf(", \n");
+            printf(", "); // Print a comma only if there's another card
         }
         count++;
     }
+    printf("\n"); // Print a newline only after all cards are printed
 }
 
