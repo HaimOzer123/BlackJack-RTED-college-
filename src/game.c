@@ -41,22 +41,10 @@ void play_game()
         if (player_value == -1) {
             break; // Player chose to quit
         }
-
         if (player_value <= 21)
         {
             dealer_draw_phase(&game_state, player_value); // Dealer's Draw Phase
         }
-
-        // After the round, reset the game state before continuing
-        reset_game_state(&game_state);
-
-        // Ask the player if they want to continue or quit
-        if (get_quitting_choice(game_state.cash)) {
-            break;
-        }
-
-        printf("Starting a new round...\n"); //debug line ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
-
     clear_game_state(&game_state); // Clear the game state at the end of the game
 }

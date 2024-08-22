@@ -96,13 +96,9 @@ int hit_or_stand_phase(GameState *game_state) {
                 game_state->pot = 0;
 
                 reset_game_state(game_state);
-
-                // After bust, ask if the player wants to continue or quit
                 if (get_quitting_choice(game_state->cash)) {
-                    return -1; // Player chose to quit
+                     exit(0); // Exit the game if the player chooses to quit
                 }
-
-                return 0; // Player busts, round ends, no further dealer action needed
             }
         }
     }
@@ -136,4 +132,12 @@ void dealer_draw_phase(GameState *game_state, int player_value) {
 
     printf("Player's hand sum: %d\n", player_value);
     printf("Dealer's hand sum: %d\n", dealer_value);
+
+
+    reset_game_state(game_state);
+
+    // Check if the player wants to quit or continue
+    if (get_quitting_choice(game_state->cash)) {
+        exit(0); // Exit the game if the player chooses to quit
+    }
 }

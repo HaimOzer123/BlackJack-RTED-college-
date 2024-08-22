@@ -16,9 +16,6 @@ void init_game_state(GameState *game_state) {
 
 // Reset the game state after each round
 void reset_game_state(GameState *game_state) {
-    printf("Resetting game state...\n"); //debug line ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    printf("Before reset: Player's hand sum: %d, Dealer's hand sum: %d, Pot: %d\n", calculate_hand_value(&game_state->player_hand), calculate_hand_value(&game_state->dealer_hand), game_state->pot);
-
     // Reset the game state as before
     while (game_state->player_hand.head != NULL) {
         card_push(&game_state->deck, card_remove_at(&game_state->player_hand, 0));
@@ -30,9 +27,6 @@ void reset_game_state(GameState *game_state) {
     clear_cardlist(&game_state->player_hand);
     clear_cardlist(&game_state->dealer_hand);
     game_state->pot = 0;
-
-         //debug line ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    printf("After reset: Player's hand sum: %d, Dealer's hand sum: %d, Pot: %d\n", calculate_hand_value(&game_state->player_hand), calculate_hand_value(&game_state->dealer_hand), game_state->pot);
 }
 
 
