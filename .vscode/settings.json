@@ -11,6 +11,7 @@
         "deck.h": "c",
         "game_state.h": "c",
         "assert.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "quitting_choice.h": "c"
     }
 }

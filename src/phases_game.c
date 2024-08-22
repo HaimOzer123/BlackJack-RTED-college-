@@ -16,11 +16,7 @@
 // Function to handle the betting phase
 void betting_phase(GameState *game_state) {
     printf("Cash: %d, Pot: %d\n", game_state->cash, game_state->pot);
-    if (game_state->pot == 0 && game_state->cash < 10) {
-        printf("Out of cash. Game Over.\n");
-        exit(0);
-    }
-
+    
     int bet = 0;
     int valid_input = 0;
     char buffer[100];
@@ -132,8 +128,7 @@ void dealer_draw_phase(GameState *game_state, int player_value) {
 
     printf("Player's hand sum: %d\n", player_value);
     printf("Dealer's hand sum: %d\n", dealer_value);
-
-
+    
     reset_game_state(game_state);
 
     // Check if the player wants to quit or continue
