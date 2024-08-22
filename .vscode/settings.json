@@ -9,6 +9,7 @@
         "game_phases.h": "c",
         "card.h": "c",
         "deck.h": "c",
-        "game_state.h": "c"
+        "game_state.h": "c",
+        "assert.h": "c"
     }
 }
