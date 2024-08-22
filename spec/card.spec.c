@@ -30,17 +30,17 @@ void test_get_suit_name() {
 
 void test_print_card() {
     Card card;
-    card.data = 0x1F;  // Ace of Hearts
+    card.data = 0x11;  // Ace of Hearts
     printf("Expected: Ace of Hearts, Got: ");
     print_card(&card);
     printf("\n");
 
-    card.data = 0x2F;  // 2 of Hearts
+    card.data = 0x21;  // 2 of Hearts
     printf("Expected: 2 of Hearts, Got: ");
     print_card(&card);
     printf("\n");
 
-    card.data = 0xBF;  // Jack of Hearts
+    card.data = 0xB1;  // Jack of Hearts
     printf("Expected: Jack of Hearts, Got: ");
     print_card(&card);
     printf("\n");

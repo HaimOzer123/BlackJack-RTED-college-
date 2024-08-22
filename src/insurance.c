@@ -61,10 +61,10 @@ int offer_insurance_impl(int cash, int original_bet, int auto_accept) {
     return insurance_bet;
 }
 
-
 int check_insurance_payout(CardList *dealer_hand, int insurance_bet) {
     int dealer_value = calculate_hand_value(dealer_hand);
-    // Check if the dealer has Blackjack
+
+    // Check if dealer's hand is a Blackjack
     if (dealer_value == 21 && get_rank_value(dealer_hand->head->next->data) == 10) {
         printf("Dealer has Blackjack! Insurance bet pays 2:1.\n");
         return 2 * insurance_bet;
