@@ -11,7 +11,7 @@
 #include "card.h"
 #include "deck.h"
 #include "hand.h"
-#include "game_state.h"  // Updated include to match your file name
+#include "game_state.h" 
 
 // Helper function to print the current state of the game
 void print_gamestate(GameState *state) {
