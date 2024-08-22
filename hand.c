@@ -54,14 +54,28 @@ void clear_cardlist(CardList *cardlist) {
 }
 
 int calculate_hand_value(CardList *hand) {
-    int value = 0, ace_count = 0;
-    for (Card *curr = hand->head; curr != NULL; curr = curr->next) {
-        int rank_value = get_rank_value(curr->data);
-        value += rank_value;
-        if (rank_value == 1) ace_count++;
+    int sum = 0;
+    int aces = 0;
+    Card *current = hand->head;
+
+    while (current != NULL) {
+        int rank_value = get_rank_value(current->data);
+        if (rank_value == 1) {  // If Ace
+            aces++;
+            sum += 11; // Assume Ace is 11 initially
+        } else {
+            sum += rank_value;
+        }
+        current = current->next;
     }
-    if (ace_count > 0 && value + 10 <= 21) value += 10;
-    return value;
+
+    // Adjust for Aces if sum is greater than 21
+    while (sum > 21 && aces > 0) {
+        sum -= 10; // Change one Ace from 11 to 1
+        aces--;
+    }
+
+    return sum;
 }
 
 void print_hand(CardList *hand, int hide_second) {

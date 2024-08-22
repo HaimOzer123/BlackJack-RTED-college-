@@ -66,34 +66,36 @@ void blackjack_check(GameState *game_state) {
 }
 
 void player_turn(GameState *game_state) {
-    int player_value = calculate_hand_value(&game_state->player_hand);
     char choice[10];
 
-    while (player_value < 21) {
+    while (1) {
+        int player_value = calculate_hand_value(&game_state->player_hand);  // Recalculate hand value each loop
+        if (player_value >= 21) {
+            break;  // Exit loop if player has 21 or more
+        }
         printf("Hit or Stand? ");
         scanf("%s", choice);
-        while ((getchar()) != '\n'); // Flush the input buffer
-
-        if (choice[0] == 'S' || choice[0] == 's')
+        while ((getchar()) != '\n');  // Clear input buffer
+        if (choice[0] == 'S' || choice[0] == 's') {
             break;
-
+        }
         if (choice[0] == 'H' || choice[0] == 'h') {
             card_push(&game_state->player_hand, card_draw(&game_state->deck));
             printf("Player's hand: ");
             print_hand(&game_state->player_hand, 0);
-            player_value = calculate_hand_value(&game_state->player_hand);
-
+            player_value = calculate_hand_value(&game_state->player_hand);  // Recalculate hand value
             if (player_value > 21) {
                 print_bust();
                 printf("Dealer's full hand: ");
                 print_hand(&game_state->dealer_hand, 0);
                 game_state->pot = 0;
                 round_reset(game_state);
-                break;
+                return;  // Exit the function after a bust
             }
         }
     }
 }
+
 
 void dealer_turn(GameState *game_state) {
     int dealer_value = calculate_hand_value(&game_state->dealer_hand);

@@ -5,6 +5,7 @@
         "insurance.h": "c",
         "time.h": "c",
         "visuals.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "game_phases.h": "c"
     }
 }

@@ -4,6 +4,8 @@
 // Date: 18/08/2024 ~ 20/9/2024
 // Lecturer: Shmuel
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include "game_state.h"
 #include "game_phases.h"
