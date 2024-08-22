@@ -10,8 +10,6 @@
 //      The module provides functions for creating new cards, freeing cards, and extracting rank and suit information.
 //      The print_card function displays the card rank and suit.
 
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
