@@ -15,4 +15,4 @@ void clear_cardlist(CardList *cardlist);
 int calculate_hand_value(CardList *hand);
 void print_hand(CardList *hand, int hide_second);
 
-#endif
+#endif // HAND_H

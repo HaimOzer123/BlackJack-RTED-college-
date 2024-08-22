@@ -9,6 +9,7 @@ typedef struct {
     CardList deck;
     CardList dealer_hand;
     CardList player_hand;
+    CardList player_hand2;
     int cash;
     int pot;
 } GameState;

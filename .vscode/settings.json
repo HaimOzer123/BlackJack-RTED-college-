@@ -6,6 +6,9 @@
         "time.h": "c",
         "visuals.h": "c",
         "stdlib.h": "c",
-        "game_phases.h": "c"
+        "game_phases.h": "c",
+        "card.h": "c",
+        "deck.h": "c",
+        "game_state.h": "c"
     }
 }

@@ -5,6 +5,7 @@ void init_game_state(GameState *game_state) {
     init_cardlist(&game_state->deck);
     init_cardlist(&game_state->dealer_hand);
     init_cardlist(&game_state->player_hand);
+    init_cardlist(&game_state->player_hand2);
     game_state->cash = 1000;
     game_state->pot = 0;
     fill_deck(&game_state->deck);
@@ -28,4 +29,5 @@ void clear_game_state(GameState *game_state) {
     clear_cardlist(&game_state->deck);
     clear_cardlist(&game_state->dealer_hand);
     clear_cardlist(&game_state->player_hand);
+    clear_cardlist(&game_state->player_hand2);
 }
