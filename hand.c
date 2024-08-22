@@ -1,3 +1,15 @@
+// Haim Ozer
+// Id: 316063569 
+// RETD - C Language For Embedded: Final project - BlackJack game 
+// Date: 18/08/2024 ~ 20/9/2024 
+// Lecturer: Shmuel 
+
+//      Description:
+//      The hand is represented as a linked list of cards.
+//      The hand value is calculated based on the rank of the cards.
+//      The hand can be printed with the option to hide the second card.
+//      The hand is cleared when the game is over.
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "hand.h"

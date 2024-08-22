@@ -1,8 +1,23 @@
+// Haim Ozer
+// Id: 316063569
+// RETD - C Language For Embedded: Final project - BlackJack game
+// Date: 18/08/2024 ~ 20/9/2024
+// Lecturer: Shmuel
+
+// Description:
+// The game is played between the player and the dealer.
+// The player can place bets, hit or stand, and win or lose money based on the outcome of the game.
+// The game continues until the player runs out of cash or decides to quit.
+// The game is implemented using a linked list of cards for the deck, player hand, and dealer hand.
+// The game logic is implemented in the play_game function, which handles the flow of the game.
+// The game is played in the console with text-based visuals to provide feedback to the player.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include "game_state.h"
+#include "visuals.h"
 
 void play_game()
 {
@@ -64,7 +79,7 @@ void play_game()
         int player_value = calculate_hand_value(&game_state.player_hand);
         if (player_value == 21)
         {
-            printf("Blackjack!\n");
+            print_blackjack();
             game_state.cash += game_state.pot + (game_state.pot / 2);
             game_state.pot = 0;
 
@@ -92,7 +107,7 @@ void play_game()
                 player_value = calculate_hand_value(&game_state.player_hand);
                 if (player_value > 21)
                 {
-                    printf("Bust! You lose.\n");
+                    print_bust();
 
                     // Show the dealer's full hand after the player busts
                     printf("Dealer's full hand: ");
@@ -122,21 +137,21 @@ void play_game()
 
             if (dealer_value > 21)
             {
-                printf("Dealer busts! You win.\n");
+                print_dealer_bust();
                 game_state.cash += 2 * game_state.pot;
             }
             else if (dealer_value > player_value)
             {
-                printf("Dealer wins.\n");
+                print_dealer_wins();
             }
             else if (dealer_value < player_value)
             {
-                printf("You win!\n");
+                print_player_wins();
                 game_state.cash += 2 * game_state.pot;
             }
             else
             {
-                printf("It's a tie.\n");
+                print_tie();
                 game_state.cash += game_state.pot;
             }
 
@@ -146,14 +161,6 @@ void play_game()
 
         // Reset Cards Phase
         reset_game_state(&game_state);
-
-        // Check if the player wants to quit or continue
-        printf("Cash: %d. Do you want to continue playing? (y/n): ", game_state.cash);
-        scanf("%s", choice);
-        if (choice[0] != 'Y' && choice[0] != 'y')
-        {
-            break;
-        }
     }
 
     clear_game_state(&game_state); // clear the game state at the end of the game
