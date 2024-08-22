@@ -10,6 +10,7 @@
         "card.h": "c",
         "deck.h": "c",
         "game_state.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "string.h": "c"
     }
 }
