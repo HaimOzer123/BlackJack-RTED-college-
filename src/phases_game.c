@@ -16,7 +16,12 @@
 // Function to handle the betting phase
 void betting_phase(GameState *game_state) {
     printf("Cash: %d, Pot: %d\n", game_state->cash, game_state->pot);
-    
+
+    if (game_state->pot == 0 && game_state->cash < 10) {
+        printf("Out of cash. Game Over.\n");
+        exit(0);
+    }
+
     int bet = 0;
     int valid_input = 0;
     char buffer[100];
@@ -57,7 +62,7 @@ void blackjack_check_phase(GameState *game_state) {
     int insurance_bet = 0;
     if (get_rank_value(game_state->dealer_hand.head->data) == 1) {
         printf("Dealer shows an Ace. You can choose whether to place an insurance bet.\n");
-        insurance_bet = offer_insurance(game_state->cash, game_state->pot);
+        insurance_bet = offer_insurance(game_state->cash, game_state->pot, 0);
         game_state->cash -= insurance_bet;
 
         if (insurance_bet > 0) {
@@ -92,9 +97,11 @@ int hit_or_stand_phase(GameState *game_state) {
                 game_state->pot = 0;
 
                 reset_game_state(game_state);
-                if (get_quitting_choice(game_state->cash)) {
-                     exit(0); // Exit the game if the player chooses to quit
-                }
+                // Check if the player is out of cash and the pot is 0
+                if (game_state->cash < 10 && game_state->pot == 0) {
+                    printf("Out of cash. Game Over.\n");
+                    exit(0); // Exit the game if the player is out of cash
+                } 
             }
         }
     }
@@ -129,10 +136,4 @@ void dealer_draw_phase(GameState *game_state, int player_value) {
     printf("Player's hand sum: %d\n", player_value);
     printf("Dealer's hand sum: %d\n", dealer_value);
     
-    reset_game_state(game_state);
-
-    // Check if the player wants to quit or continue
-    if (get_quitting_choice(game_state->cash)) {
-        exit(0); // Exit the game if the player chooses to quit
-    }
 }

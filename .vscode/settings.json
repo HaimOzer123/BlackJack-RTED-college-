@@ -12,6 +12,7 @@
         "game_state.h": "c",
         "assert.h": "c",
         "string.h": "c",
-        "quitting_choice.h": "c"
+        "quitting_choice.h": "c",
+        "phases_game.h": "c"
     }
 }
